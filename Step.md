@@ -1,16 +1,16 @@
-1. 
-python3 -m venv venv
-source venv/bin/activate
-
-2. 
-poetry env activate
-
-3.
+1. 初始化
 export PATH="$HOME/.local/bin:$PATH"
+poetry env activate
+poetry install
 
-4.
+2. 保存auth文件
+poetry run python launch_camoufox.py --debug
 python launch_camoufox.py --debug
 
-5. docker更新
+3. docker更新
+cd docker
 bash update.sh
 
+
+python3 -m venv venv
+source venv/bin/activate

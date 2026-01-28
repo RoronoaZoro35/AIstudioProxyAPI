@@ -4,10 +4,10 @@
  */
 
 import { useState } from 'react';
-import { 
-  PanelLeft, 
-  PanelRight, 
-  Moon, 
+import {
+  PanelLeft,
+  PanelRight,
+  Moon,
   Sun,
   Layers,
   Settings,
@@ -18,7 +18,7 @@ import { ErrorBoundary } from '@/components/common/ErrorBoundary';
 import { ChatPanel } from '@/components/chat/ChatPanel';
 import { SettingsPanel } from '@/components/settings/SettingsPanel';
 import { SettingsPage } from '@/components/settings/SettingsPage';
-import { LogViewer } from '@/components/logs/LogViewer';
+import { LogViewer } from '@/components/log-viewer/LogViewer';
 import styles from './Layout.module.css';
 
 type MainView = 'chat' | 'settings';
@@ -33,7 +33,7 @@ export function Layout() {
     <div className={styles.layout}>
       {/* Left Sidebar - Model Settings (only visible in chat mode) */}
       {mainView === 'chat' && (
-        <aside 
+        <aside
           className={`${styles.sidebar} ${!leftSidebarOpen ? styles.collapsed : ''}`}
           role="complementary"
           aria-label="模型面板"
@@ -55,7 +55,7 @@ export function Layout() {
         <header className={styles.header} role="banner">
           <div className={styles.headerLeft}>
             {mainView === 'chat' && (
-              <button 
+              <button
                 className={styles.toggleButton}
                 onClick={() => setLeftSidebarOpen(!leftSidebarOpen)}
                 aria-label={leftSidebarOpen ? '隐藏设置面板' : '显示设置面板'}
@@ -88,7 +88,7 @@ export function Layout() {
             </div>
           </div>
           <div className={styles.headerRight}>
-            <button 
+            <button
               className={styles.toggleButton}
               onClick={toggleTheme}
               aria-label={theme === 'dark' ? '切换到亮色模式' : '切换到暗色模式'}
@@ -96,7 +96,7 @@ export function Layout() {
               {theme === 'dark' ? <Sun size={20} aria-hidden="true" /> : <Moon size={20} aria-hidden="true" />}
             </button>
             {mainView === 'chat' && (
-              <button 
+              <button
                 className={styles.toggleButton}
                 onClick={() => setRightSidebarOpen(!rightSidebarOpen)}
                 aria-label={rightSidebarOpen ? '隐藏日志面板' : '显示日志面板'}
@@ -128,7 +128,7 @@ export function Layout() {
 
       {/* Right Sidebar - Logs (only visible in chat mode) */}
       {mainView === 'chat' && (
-        <aside 
+        <aside
           className={`${styles.rightSidebar} ${!rightSidebarOpen ? styles.collapsed : ''}`}
           role="complementary"
           aria-label="日志面板"

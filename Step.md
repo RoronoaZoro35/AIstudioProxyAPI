@@ -3,18 +3,24 @@ export PATH="$HOME/.local/bin:$PATH"
 poetry env activate
 poetry install
 
-2. 保存auth文件
+2. 构建前端
+cd static/frontend
+npm run build
+
+3. 保存auth文件
 poetry run python launch_camoufox.py --debug
 python launch_camoufox.py --debug
 
-3. docker更新
+4. docker更新
 cd docker
 bash update.sh
 
 
+5. 创建venv并激活
 python3 -m venv venv
 source venv/bin/activate
 
+6. 添加CORS
 
     # 添加CORS中间件，允许所有来源访问
     from fastapi.middleware.cors import CORSMiddleware
